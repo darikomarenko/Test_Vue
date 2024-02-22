@@ -2,7 +2,7 @@
     <div class="header-employees">
       <h1 class="company">Жилфонд</h1>
       <p class="account">
-        <a href="#" title="Сменить учетную запись">Пользователь</a>
+        <a href="#" title="User">Пользователь</a>
       </p>
     </div>
   </template>
