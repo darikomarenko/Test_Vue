@@ -32,7 +32,7 @@
         @click.prevent="clearSearchResult"
         v-if="showClearButton"
       >
-        Очистить
+      х
       </button>
     </div>
 
@@ -183,12 +183,12 @@ $color-text-gray: #88898b;
 
     .clear-result {
       display: block;
-      width: 50%;
+      width: 15%;
       height: 30px;
       margin: 10px auto;
       border: 2px solid $color-border-gray;
-      color: $color-text-gray;
-      background-color: white;
+      color: black;
+      background-color: #e56c6c;
       border-radius: 10px;
       font-size: 1.5rem;
       font-family: "Montserrat";
@@ -221,9 +221,21 @@ $color-text-gray: #88898b;
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 400px) {
+@media screen and (min-width: 319px) and (max-width: 600px) {
   .search {
     flex-direction: column;
+    overflow: scroll;
+  .search-aside {
+    width: 100%;
+    
+
+    .search-aside_container {
+      height: 40vh;
+      .search-input {
+        padding: 0px;
+      }
+    }
   }
+}
 }
 </style>

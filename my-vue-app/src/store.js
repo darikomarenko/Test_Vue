@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     employees: [],
-    searchMessage: "начните поиск",
+    searchMessage: "Начните поиск",
   },
   mutations: {
     setEmployeeByID(state, newEmployee) {
@@ -12,9 +12,9 @@ export default createStore({
       );
       if (!newEmployeeInArray) {
         state.employees.push(newEmployee);
-        state.searchMessage = "результат добавлен ниже";
+        state.searchMessage = "Результат поиска:";
       } else {
-        state.searchMessage = "сотрудник уже показан ниже";
+        state.searchMessage = "Сотрудник уже найден";
       }
     },
     setEmployeeByUserName(state, newEmployee) {
@@ -24,13 +24,13 @@ export default createStore({
       );
       if (!newEmployeeInArray) {
         state.employees.push(newEmployee[0]);
-        state.searchMessage = "результат добавлен ниже";
+        state.searchMessage = "Результат поиска:";
       } else {
-        state.searchMessage = "сотрудник уже показан ниже";
+        state.searchMessage = "Сотрудник уже найден";
       }
     },
     changeSearchMessage(state) {
-      state.searchMessage = "ничего не найдено";
+      state.searchMessage = "Нет данных";
     },
     removeEmployeeCard(state, userId) {
       let removeEmployeeName = state.employees.filter(
@@ -40,14 +40,14 @@ export default createStore({
         (employee) => employee.id !== userId
       );
       if (state.employees.length === 0) {
-        state.searchMessage = "начните поиск";
+        state.searchMessage = "Начните поиск";
       } else {
-        state.searchMessage = `сотрудник ${removeEmployeeName} удален`;
+        state.searchMessage = `Сотрудник ${removeEmployeeName} удален`;
       }
     },
     clearSearchResult(state) {
       state.employees = [];
-      state.searchMessage = "результаты поиска очищены";
+      state.searchMessage = "Результаты поиска очищены";
     },
   },
   actions: {
@@ -55,7 +55,7 @@ export default createStore({
       await fetch(`https://jsonplaceholder.typicode.com/users/${employeeID}`)
         .then((response) => {
           if (response.status >= 400) {
-            throw new Error(`сотрудника с ID: "${employeeID}" не существует`);
+            throw new Error(`Сотрудника с ID: "${employeeID}" не существует`);
           } else {
             return response.json();
           }
@@ -74,7 +74,7 @@ export default createStore({
         .then((newEmployee) => {
           if (newEmployee.length === 0) {
             throw new Error(
-              `сотрудника с именем: "${employeeUserName}" не существует`
+              `Сотрудника с именем: "${employeeUserName}" не существует`
             );
           } else {
             store.commit("setEmployeeByUserName", newEmployee);

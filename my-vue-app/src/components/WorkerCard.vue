@@ -17,7 +17,7 @@
   
   <script>
   export default {
-    name: "EmployeeCard",
+    name: "WorkerCard",
     props: {
       userId: {
         type: Number,
